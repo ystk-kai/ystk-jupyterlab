@@ -2,8 +2,10 @@ version: "3.9"
 
 x-base: &base
   image: ystk-jupyterlab
+  container_name: ystk-jupyterlab
   build: .
   volumes:
+    - ./jupyter:/home/jovyan/.jupyter
     - ./notebooks:/notebooks
 
 services:
