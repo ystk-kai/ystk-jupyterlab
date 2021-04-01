@@ -1,0 +1,20 @@
+version: "3.9"
+
+x-base: &base
+  image: ystk-jupyterlab
+  build: .
+  volumes:
+    - ./notebooks:/notebooks
+
+services:
+  shell:
+    <<: *base
+    entrypoint: ["bash"]
+    profiles:
+      - none
+      
+  jupyterlab:
+    <<: *base
+    entrypoint: ["start-notebook.sh"]
+    ports:
+      - 8888:8888
