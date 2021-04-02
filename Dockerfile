@@ -11,7 +11,4 @@ RUN conda install xeus-cling --quiet --yes -c conda-forge
 
 RUN conda clean --all
 
-# Rebuild for Extensions
-RUN jupyter lab build
-
 ENV JUPYTER_ENABLE_LAB yes
