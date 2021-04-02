@@ -6,12 +6,14 @@ x-base: &base
   build: .
   volumes:
     - ./jupyter:/home/jovyan/.jupyter
+    - jupyter-app:/opt/conda/share/jupyter
     - ./notebooks:/notebooks
 
 services:
   shell:
     <<: *base
     entrypoint: ["bash"]
+    user: root
     profiles:
       - none
       
@@ -20,3 +22,6 @@ services:
     entrypoint: ["start-notebook.sh"]
     ports:
       - 8888:8888
+
+volumes:
+  jupyter-app:
