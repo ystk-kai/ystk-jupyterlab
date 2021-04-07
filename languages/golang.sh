@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+set -eo pipefail
+
 GO111MODULE=off go get -d -u github.com/gopherdata/gophernotes
 
 cd "$GOPATH/src/github.com/gopherdata/gophernotes"

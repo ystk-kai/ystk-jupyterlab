@@ -4,11 +4,16 @@ JupyterLab に [Support Languages](#support-languages) 内の言語を追加し�
 
 ## Support Languages
 
-- C++
-- Go
-- Java
-- Kotlin
-- Python
+- [C++](https://isocpp.org/)
+- [Go](https://golang.org/)
+- [Java](https://www.java.com/ja/)
+- [Kotlin](https://kotlinlang.org/)
+- [Python](https://www.python.org/)
+
+## Support Commands
+
+- [Gradle](https://gradle.org/)
+- [jq](https://stedolan.github.io/jq/)
 
 ## Usage
 
