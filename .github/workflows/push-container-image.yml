@@ -1,0 +1,26 @@
+name: Push Container Image
+
+on:
+  push:
+    branches:
+      - master
+      - dev
+
+defaults:
+  run:
+    shell: bash
+
+jobs:
+  build_and_push:
+    name: Build and push container image
+
+    runs-on: ubuntu-20.04
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - run: docker-compose build
+      - run: docker-compose run deploy
+
+env:
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

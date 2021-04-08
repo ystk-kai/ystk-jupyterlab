@@ -1,13 +1,17 @@
 version: "3.9"
 
+x-volumes: &volumes
+  - ./docker/services:/services
+  - ./jupyter:/home/jovyan/.jupyter
+  - jupyter-app:/opt/conda/share/jupyter
+  - ./notebooks:/notebooks
+  - /var/run/docker.sock:/var/run/docker.sock
+
 x-base: &base
   image: ystk-jupyterlab
   container_name: ystk-jupyterlab
   build: .
-  volumes:
-    - ./jupyter:/home/jovyan/.jupyter
-    - jupyter-app:/opt/conda/share/jupyter
-    - ./notebooks:/notebooks
+  volumes: *volumes
 
 services:
   shell:
@@ -22,6 +26,13 @@ services:
     entrypoint: ["start-notebook.sh"]
     ports:
       - 8888:8888
+
+  deploy:
+    <<: *base
+    entrypoint: ["bash", "/services/deploy.sh"]
+    environment:
+      - GITHUB_REF
+      - GITHUB_TOKEN
 
 volumes:
   jupyter-app:
