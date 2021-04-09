@@ -1,11 +1,12 @@
 version: "3.9"
 
 x-volumes: &volumes
-  - ./docker/services:/services
-  - ./jupyter:/home/jovyan/.jupyter
-  - jupyter-app:/opt/conda/share/jupyter
-  - ./notebooks:/notebooks
+  - ./jupyter:/app/jupyter
+  - ./notebooks:/app/notebooks
+  - ./docker/services:/app/services
   - /var/run/docker.sock:/var/run/docker.sock
+  - jupyter-app:/opt/conda/share/jupyter
+  - jupyter-user:/home/jovyan/.jupyter
 
 x-environment: &environment
   - DOCKERHUB_USER
@@ -16,7 +17,6 @@ x-environment: &environment
 
 x-base: &base
   image: ystk-jupyterlab
-  container_name: ystk-jupyterlab
   build: .
   volumes: *volumes
 
@@ -31,20 +31,20 @@ services:
       
   jupyterlab:
     <<: *base
-    entrypoint: ["start-notebook.sh"]
+    entrypoint: ["bash", "/app/services/jupyterlab.sh"]
     ports:
       - 8888:8888
 
   deploy:
     <<: *base
-    entrypoint: ["bash", "/services/deploy.sh"]
+    entrypoint: ["bash", "/app/services/deploy.sh"]
     environment: *environment
     profiles:
       - none
 
   pull:
     image: docker
-    entrypoint: ["sh", "/services/pull.sh"]
+    entrypoint: ["sh", "/app/services/pull.sh"]
     volumes: *volumes
     environment: *environment
     profiles:
@@ -52,3 +52,4 @@ services:
 
 volumes:
   jupyter-app:
+  jupyter-user:

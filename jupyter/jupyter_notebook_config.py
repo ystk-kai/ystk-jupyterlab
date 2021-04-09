@@ -382,7 +382,7 @@
 
 ## The directory to use for notebooks and kernels.
 #  Default: ''
-c.NotebookApp.notebook_dir = '/notebooks'
+c.NotebookApp.notebook_dir = '/app/notebooks'
 
 ## Whether to open in a browser after starting. The specific browser used is
 #  platform dependent and determined by the python standard library `webbrowser`
