@@ -38,4 +38,4 @@ Notebook ファイルは `./notebooks` に保存される。
 
 ## Documents
 
-- [Tips](wiki/Tips)
+- [Tips](https://github.com/ystk-kai/ystk-jupyterlab/wiki/Tips)
