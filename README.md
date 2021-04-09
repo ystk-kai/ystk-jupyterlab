@@ -21,8 +21,8 @@ JupyterLab に [Support Languages](#support-languages) 内の言語カーネル�
 ## Usage
 
 ```bash
-# Docker イメージをビルド
-docker-compose build
+# Docker イメージを取得
+docker-compose run pull
 
 # JupyterLab を起動
 docker-compose up -d
@@ -35,13 +35,6 @@ docker-compose down
 ```
 
 Notebook ファイルは `./notebooks` に保存される。
-
-## Debug
-
-```bash
-# インタラクティブシェルでコンテナを起動
-docker-compose run shell
-```
 
 ## Documents
 

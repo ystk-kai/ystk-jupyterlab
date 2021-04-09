@@ -7,6 +7,13 @@ x-volumes: &volumes
   - ./notebooks:/notebooks
   - /var/run/docker.sock:/var/run/docker.sock
 
+x-environment: &environment
+  - DOCKERHUB_USER
+  - DOCKERHUB_TOKEN
+  - GITHUB_REF
+  - GITHUB_USER
+  - GITHUB_TOKEN
+
 x-base: &base
   image: ystk-jupyterlab
   container_name: ystk-jupyterlab
@@ -18,6 +25,7 @@ services:
     <<: *base
     entrypoint: ["bash"]
     user: root
+    environment: *environment
     profiles:
       - none
       
@@ -30,9 +38,13 @@ services:
   deploy:
     <<: *base
     entrypoint: ["bash", "/services/deploy.sh"]
-    environment:
-      - GITHUB_REF
-      - GITHUB_TOKEN
+    environment: *environment
+
+  pull:
+    image: docker
+    entrypoint: ["sh", "/services/pull.sh"]
+    volumes: *volumes
+    environment: *environment
 
 volumes:
   jupyter-app:
