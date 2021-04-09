@@ -1,0 +1,13 @@
+
+version: "3.9"
+
+services:
+  jupyterlab:
+    ports:
+      # 接続ポートの追加 e.g. localhost:10080
+      - 10080:8888
+    volumes:
+      # 任意のディレクトリをルートにして Jupyter を起動
+      # ./jupyter/jupyter_notebook_config.py
+      # c.NotebookApp.notebook_dir = '/home/user'
+      - ~:/home/user
