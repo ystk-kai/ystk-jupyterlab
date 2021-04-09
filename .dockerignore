@@ -1,4 +1,4 @@
 .git
 .env
-jupyter/lab
+jupyter_notebook_config.py
 notebooks
