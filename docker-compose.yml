@@ -39,12 +39,16 @@ services:
     <<: *base
     entrypoint: ["bash", "/services/deploy.sh"]
     environment: *environment
+    profiles:
+      - none
 
   pull:
     image: docker
     entrypoint: ["sh", "/services/pull.sh"]
     volumes: *volumes
     environment: *environment
+    profiles:
+      - none
 
 volumes:
   jupyter-app:
