@@ -18,6 +18,18 @@ JupyterLab に [Support Languages](#support-languages) 内の言語カーネル�
 - [jq](https://stedolan.github.io/jq/)
 - [GitHub CLI](https://github.com/cli/cli)
 
+## Features
+
+- Jupyter の設定を変更可能
+    - `jupyter/jupyter_notebook_config.default.py` を `jupyter/jupyter_notebook_config.py` にコピーする。
+- 拡張機能の有効性を保持
+    - コンテナ削除後も追加した拡張機能を保持します。
+- ポート変更・Jupyter のルートディレクトリ位置の変更用のテンプレートを用意
+    - `docker-compose.override.sample.yml` を `docker-compose.override.yml` にコピーする。
+- ビルド済みイメージの簡易取得
+    - Docker ビルドを短縮するため、コンテナレジストリから簡単に取得できる。
+    - サポート対象の言語カーネルなどが増えた場合、更にビルド時間が増えるため。
+
 ## Usage
 
 ```bash
@@ -34,7 +46,7 @@ docker-compose up -d
 docker-compose down
 ```
 
-Notebook ファイルは `./notebooks` に保存される。
+初期値の Jupyter のルートディレクトリは `./notebooks` となる。
 
 ## Documents
 
