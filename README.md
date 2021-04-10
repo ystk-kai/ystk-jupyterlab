@@ -21,11 +21,11 @@ JupyterLab に [Support Languages](#support-languages) 内の言語カーネル�
 ## Features
 
 - Jupyter の設定を変更可能
-    - `jupyter/jupyter_notebook_config.default.py` を `jupyter/jupyter_notebook_config.py` にコピーする。
+    - `jupyter/jupyter_notebook_config.default.py` を `jupyter/jupyter_notebook_config.py` にコピーして設定してください。
 - 拡張機能の有効性を保持
     - コンテナ削除後も追加した拡張機能を保持します。
 - ポート変更・Jupyter のルートディレクトリ位置の変更用のテンプレートを用意
-    - `docker-compose.override.sample.yml` を `docker-compose.override.yml` にコピーする。
+    - `docker-compose.override.sample.yml` を `docker-compose.override.yml` にコピーして設定してください。
 - ビルド済みイメージの簡易取得
     - Docker ビルドを短縮するため、コンテナレジストリから簡単に取得できる。
     - サポート対象の言語カーネルなどが増えた場合、更にビルド時間が増えるため。
@@ -33,6 +33,12 @@ JupyterLab に [Support Languages](#support-languages) 内の言語カーネル�
 ## Usage
 
 ```bash
+# コードの取得
+git clone git@github.com:ystk-kai/ystk-jupyterlab.git
+
+# プロジェクト内に移動
+cd ystk-jupyterlab
+
 # Docker イメージを取得
 docker-compose run pull
 
@@ -46,7 +52,10 @@ docker-compose up -d
 docker-compose down
 ```
 
-初期値の Jupyter のルートディレクトリは `./notebooks` となる。
+初期値の Jupyter のルートディレクトリは `./notebooks` です。
+
+⚠️`jupyter/jupyter_notebook_config.default.py` はトークンとパスワードを無効にしています。  
+外部に公開する場合は、 `jupyter_notebook_config.py` を配置して適切に設定してください。
 
 ## Documents
 

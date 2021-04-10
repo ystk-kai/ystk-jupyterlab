@@ -1,13 +1,8 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
 
 set -eo pipefail
 
-config=jupyter_notebook_config.default.py
-
-if [[ -e /app/jupyter/jupyter_notebook_config.py ]]; then
-    config=jupyter_notebook_config.py
-fi
-
-cp -f /app/jupyter/$config /home/jovyan/.jupyter/$config
+config=$([[ -e /app/jupyter/jupyter_notebook_config.py ]] && echo "jupyter_notebook_config.py" || echo "jupyter_notebook_config.default.py")
+cp -f /app/jupyter/$config /home/jovyan/.jupyter/jupyter_notebook_config.py
 
 start-notebook.sh
