@@ -5,7 +5,7 @@ x-volumes: &volumes
   - ./notebooks:/app/notebooks
   - ./docker/services:/app/services
   - /var/run/docker.sock:/var/run/docker.sock
-  - jupyter-app:/opt/conda/share/jupyter
+  - jupyter-app:/opt/conda/share/jupyter/lab
   - jupyter-user:/home/jovyan/.jupyter
 
 x-environment: &environment
