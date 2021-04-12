@@ -26,8 +26,8 @@ JupyterLab に [Support Languages](#support-languages) 内の言語カーネル�
     - コンテナ削除後も追加した拡張機能を保持します。
 - ポート変更・Jupyter のルートディレクトリ位置の変更用のテンプレートを用意
     - `docker-compose.override.sample.yml` を `docker-compose.override.yml` にコピーして設定してください。
-- ビルド済みイメージの簡易取得
-    - Docker ビルドを短縮するため、コンテナレジストリから簡単に取得できる。
+- ビルド済みイメージの取得
+    - Docker ビルドを短縮するため、コンテナレジストリからの取得を推奨。
     - サポート対象の言語カーネルなどが増えた場合、更にビルド時間が増えるため。
 
 ## Usage
@@ -40,6 +40,7 @@ git clone git@github.com:ystk-kai/ystk-jupyterlab.git
 cd ystk-jupyterlab
 
 # Docker イメージを取得
+# ローカルでビルドする場合は docker-compose build を実行
 docker-compose run pull
 
 # JupyterLab を起動
@@ -56,6 +57,14 @@ docker-compose down
 
 ⚠️`jupyter/jupyter_notebook_config.default.py` はトークンとパスワードを無効にしています。  
 外部に公開する場合は、 `jupyter_notebook_config.py` を配置して適切に設定してください。
+
+## Initialize
+
+docker ボリュームにユーザデータや Extension Manager で追加した拡張機能を格納しているため、初期化する場合は以下のコマンドを実施してください。
+
+```bash
+docker-compose down --volumes
+```
 
 ## Documents
 
