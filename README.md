@@ -9,18 +9,18 @@ JupyterLab に [Support Languages](#support-languages) 内の言語カーネル�
 - [C++](https://isocpp.org/)
 - [Go](https://golang.org/)
 - [Java](https://www.java.com/ja/)
-- [Kotlin](https://kotlinlang.org/)
-- [Python](https://www.python.org/)
-- [Lua](https://www.lua.org/)
 - [JavaScript(Node.js)](https://nodejs.org/ja/)
-- [TypeScript](https://www.typescriptlang.org/)
+- [Kotlin](https://kotlinlang.org/)
+- [Lua](https://www.lua.org/)
+- [Python](https://www.python.org/)
 - [Rust](https://www.rust-lang.org/)
+- [TypeScript](https://www.typescriptlang.org/)
 
 ## Support Commands
 
+- [GitHub CLI](https://github.com/cli/cli)
 - [Gradle](https://gradle.org/)
 - [jq](https://stedolan.github.io/jq/)
-- [GitHub CLI](https://github.com/cli/cli)
 
 ## Features
 
@@ -69,6 +69,11 @@ docker ボリュームにユーザデータや Extension Manager で追加した
 ```bash
 docker-compose down --volumes
 ```
+
+## Container Image
+
+- [Docker Hub](https://hub.docker.com/r/ystkkai/ystk-jupyterlab)
+- [GitHub](https://github.com/ystk-kai/ystk-jupyterlab/packages/)
 
 ## Documents
 
