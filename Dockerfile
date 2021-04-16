@@ -40,4 +40,7 @@ RUN bash docker/github-cli.sh
 COPY docker/docker.sh docker/docker.sh
 RUN bash docker/docker.sh
 
+# Lua
+RUN pip install --no-cache-dir ilua
+
 ENV JUPYTER_ENABLE_LAB yes
