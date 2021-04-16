@@ -13,8 +13,9 @@ RUN conda install --quiet --yes -c jetbrains --override-channels kotlin-jupyter-
 
 USER root
 
+# Support commands
 RUN apt-get update && \
-    apt-get install -y apt-transport-https ca-certificates gnupg lsb-release curl jq && \
+    apt-get install -y curl jq && \
     apt-get clean
 
 # Go
