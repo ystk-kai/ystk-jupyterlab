@@ -14,6 +14,7 @@ JupyterLab に [Support Languages](#support-languages) 内の言語カーネル�
 - [Lua](https://www.lua.org/)
 - [JavaScript(Node.js)](https://nodejs.org/ja/)
 - [TypeScript](https://www.typescriptlang.org/)
+- [Rust](https://www.rust-lang.org/)
 
 ## Support Commands
 

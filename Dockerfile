@@ -48,4 +48,9 @@ RUN pip install --no-cache-dir ilua
 RUN npm install -g tslab && npm cache clean --force
 RUN tslab install
 
+# Rust
+ENV PATH $HOME/.cargo/bin:$PATH
+COPY docker/rust.sh docker/rust.sh
+RUN bash docker/rust.sh
+
 ENV JUPYTER_ENABLE_LAB yes
