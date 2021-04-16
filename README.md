@@ -12,6 +12,8 @@ JupyterLab に [Support Languages](#support-languages) 内の言語カーネル�
 - [Kotlin](https://kotlinlang.org/)
 - [Python](https://www.python.org/)
 - [Lua](https://www.lua.org/)
+- [JavaScript(Node.js)](https://nodejs.org/ja/)
+- [TypeScript](https://www.typescriptlang.org/)
 
 ## Support Commands
 

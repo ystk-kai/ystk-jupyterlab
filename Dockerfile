@@ -43,4 +43,8 @@ RUN bash docker/docker.sh
 # Lua
 RUN pip install --no-cache-dir ilua
 
+# JavaScript(Node.js) and TypeScript
+RUN npm install -g tslab && npm cache clean --force
+RUN tslab install
+
 ENV JUPYTER_ENABLE_LAB yes
