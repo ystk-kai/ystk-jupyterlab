@@ -15,7 +15,7 @@ USER root
 
 # Support commands
 RUN apt-get update && \
-    apt-get install -y curl jq && \
+    apt-get install --no-install-recommends -y curl jq && \
     apt-get clean
 
 # Go

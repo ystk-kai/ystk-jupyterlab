@@ -3,7 +3,7 @@
 set -eo pipefail
 
 apt-get update
-apt-get install -y cmake build-essential
+apt-get install --no-install-recommends -y cmake build-essential
 apt-get clean
 
 curl -sSf https://sh.rustup.rs | sh -s -- -y --default-toolchain stable
