@@ -10,9 +10,11 @@ JupyterLab に [Support Languages](#support-languages) 内の言語カーネル�
 - [Go](https://golang.org/)
 - [Java](https://www.java.com/ja/)
 - [JavaScript(Node.js)](https://nodejs.org/ja/)
+- [Julia](https://julialang.org/)
 - [Kotlin](https://kotlinlang.org/)
 - [Lua](https://www.lua.org/)
 - [Python](https://www.python.org/)
+- [R](https://www.r-project.org/)
 - [Rust](https://www.rust-lang.org/)
 - [TypeScript](https://www.typescriptlang.org/)
 

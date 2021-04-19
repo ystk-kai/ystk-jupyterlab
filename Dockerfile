@@ -1,6 +1,6 @@
 FROM golang:buster as golang
 
-FROM jupyter/scipy-notebook:latest
+FROM jupyter/datascience-notebook:latest
 
 # Python
 COPY docker/python.sh docker/python.sh
