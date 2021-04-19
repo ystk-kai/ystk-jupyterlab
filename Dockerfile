@@ -13,10 +13,9 @@ RUN conda install --quiet --yes -c jetbrains --override-channels kotlin-jupyter-
 
 USER root
 
-# Support commands
-RUN apt-get update && \
-    apt-get install --no-install-recommends -y curl jq && \
-    apt-get clean
+# Support packages
+COPY docker/support-package.sh docker/support-package.sh
+RUN bash docker/support-package.sh
 
 # Go
 ENV GOPATH /go
