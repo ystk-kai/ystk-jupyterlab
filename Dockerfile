@@ -2,6 +2,10 @@ FROM golang:buster as golang
 
 FROM jupyter/scipy-notebook:latest
 
+# Python
+COPY docker/python.sh docker/python.sh
+RUN bash docker/python.sh
+
 # C++
 RUN conda install --quiet --yes -c conda-forge --override-channels xeus-cling && conda clean --all
 
