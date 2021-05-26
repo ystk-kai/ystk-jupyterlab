@@ -3,3 +3,5 @@ notebooks
 .env
 jupyter_notebook_config.py
 docker-compose.override.yml
+selenium/selenoid/logs
+selenium/selenoid/video
