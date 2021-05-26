@@ -19,6 +19,7 @@ JupyterLab に [Support Languages](#support-languages) 内の言語カーネル�
 - [R](https://www.r-project.org/)
 - [Rust](https://www.rust-lang.org/)
 - [TypeScript](https://www.typescriptlang.org/)
+
 ## Support Packages
 
 - [GitHub CLI](https://github.com/cli/cli)

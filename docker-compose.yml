@@ -18,7 +18,9 @@ x-environment: &environment
 x-base: &base
   image: ystk-jupyterlab
   container_name: ystk-jupyterlab
-  build: .
+  build:
+    context: docker/setup
+    dockerfile: ../../Dockerfile
   volumes: *volumes
 
 services:
