@@ -17,6 +17,7 @@ x-environment: &environment
 
 x-base: &base
   image: ystk-jupyterlab
+  container_name: ystk-jupyterlab
   build: .
   volumes: *volumes
 

@@ -2,6 +2,12 @@ FROM golang:buster as golang
 
 FROM jupyter/datascience-notebook:latest
 
+# Support packages
+COPY docker/support-package.sh docker/support-package.sh
+USER root
+RUN bash docker/support-package.sh
+USER jovyan
+
 # Python
 COPY docker/python.sh docker/python.sh
 RUN bash docker/python.sh
@@ -15,35 +21,6 @@ RUN conda install --quiet --yes -c conda-forge --override-channels scijava-jupyt
 # Kotlin
 RUN conda install --quiet --yes -c jetbrains --override-channels kotlin-jupyter-kernel && conda clean --all
 
-USER root
-
-# Support packages
-COPY docker/support-package.sh docker/support-package.sh
-RUN bash docker/support-package.sh
-
-# Go
-ENV GOPATH /go
-ENV PATH $GOPATH/bin:/usr/local/go/bin:$PATH
-COPY --from=golang /usr/local/go/ /usr/local/go/
-COPY docker/golang.sh docker/golang.sh
-RUN bash docker/golang.sh
-
-# Gradle
-ENV GRADLE_VERSION 6.8.3
-ENV PATH /opt/gradle/gradle/bin:$PATH
-COPY docker/gradle.sh docker/gradle.sh
-RUN bash docker/gradle.sh
-
-# GitHub CLI
-ENV GITHUB_CLI_VERSION 1.8.1
-ENV PATH /usr/local/gh/bin:$PATH
-COPY docker/github-cli.sh docker/github-cli.sh
-RUN bash docker/github-cli.sh
-
-# Docker
-COPY docker/docker.sh docker/docker.sh
-RUN bash docker/docker.sh
-
 # Lua
 RUN pip install --no-cache-dir ilua
 
@@ -54,6 +31,53 @@ RUN tslab install
 # Rust
 ENV PATH $HOME/.cargo/bin:$PATH
 COPY docker/rust.sh docker/rust.sh
+USER root
+RUN apt-get update && apt-get install --no-install-recommends -y cmake build-essential && apt-get clean
+USER jovyan
 RUN bash docker/rust.sh
+
+# Go
+ENV GOPATH /go
+ENV PATH $GOPATH/bin:/usr/local/go/bin:$PATH
+COPY --from=golang /usr/local/go/ /usr/local/go/
+COPY docker/golang.sh docker/golang.sh
+USER root
+RUN apt-get update && apt-get install --no-install-recommends -y apt-transport-https ca-certificates gnupg lsb-release && apt-get clean
+RUN mkdir -p $GOPATH /usr/local/share/jupyter && chown jovyan $GOPATH /usr/local/share/jupyter
+USER jovyan
+RUN bash docker/golang.sh
+
+# .NET
+ENV DOTNET_ROOT /usr/share/dotnet
+ENV PATH /usr/share/dotnet:/jovyan/.dotnet/tools:$PATH
+COPY docker/dotnet.sh docker/dotnet.sh
+USER root
+RUN mkdir -p /usr/share/dotnet /usr/bin/dotnet /jovyan/.dotnet/tools && chown jovyan /usr/share/dotnet /usr/bin/dotnet /jovyan/.dotnet/tools
+USER jovyan
+RUN bash docker/dotnet.sh
+
+# Gradle
+# https://github.com/gradle/gradle/releases
+ENV GRADLE_VERSION 7.0.2
+ENV PATH /opt/gradle/gradle/bin:$PATH
+COPY docker/gradle.sh docker/gradle.sh
+USER root
+RUN mkdir -p /opt/gradle && chown jovyan /opt/gradle
+USER jovyan
+RUN bash docker/gradle.sh
+
+# GitHub CLI
+# https://github.com/cli/cli/releases/
+ENV GITHUB_CLI_VERSION 1.9.2
+ENV PATH /usr/local/gh/bin:$PATH
+COPY docker/github-cli.sh docker/github-cli.sh
+USER root
+RUN mkdir -p /usr/local/gh && chown jovyan /usr/local/gh
+USER jovyan
+RUN bash docker/github-cli.sh
+
+# JupyterLab Extensions
+COPY docker/lab-extension.sh docker/lab-extension.sh
+RUN bash docker/lab-extension.sh
 
 ENV JUPYTER_ENABLE_LAB yes

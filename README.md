@@ -2,11 +2,13 @@
 
 [![Push Container Image](https://github.com/ystk-kai/ystk-jupyterlab/actions/workflows/push-container-image.yml/badge.svg?branch=master)](https://github.com/ystk-kai/ystk-jupyterlab/actions/workflows/push-container-image.yml)
 
-JupyterLab に [Support Languages](#support-languages) 内の言語カーネルと [Support Packages](#support-packages) のコマンドラインツールを追加した Docker 環境を構築します。
+JupyterLab に [Support Languages](#support-languages) 内の言語カーネルと [Support Packages](#support-packages) を追加した Docker 環境を構築します。
 
 ## Support Languages
 
+- [C#](https://docs.microsoft.com/en-us/dotnet/csharp/)
 - [C++](https://isocpp.org/)
+- [F#](https://fsharp.org/)
 - [Go](https://golang.org/)
 - [Java](https://www.java.com/ja/)
 - [JavaScript(Node.js)](https://nodejs.org/ja/)
@@ -17,7 +19,6 @@ JupyterLab に [Support Languages](#support-languages) 内の言語カーネル�
 - [R](https://www.r-project.org/)
 - [Rust](https://www.rust-lang.org/)
 - [TypeScript](https://www.typescriptlang.org/)
-
 ## Support Packages
 
 - [GitHub CLI](https://github.com/cli/cli)
@@ -37,6 +38,8 @@ JupyterLab に [Support Languages](#support-languages) 内の言語カーネル�
     - サポート対象の言語カーネルなどが増えた場合、更にビルド時間が増えるため。
 
 ## Usage
+
+実行には [Docker](https://docs.docker.com/get-docker/) 環境が必要となります。
 
 ```bash
 # コードの取得

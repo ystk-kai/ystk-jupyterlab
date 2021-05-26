@@ -2,10 +2,6 @@
 
 set -eo pipefail
 
-apt-get update
-apt-get install --no-install-recommends -y apt-transport-https ca-certificates gnupg lsb-release
-apt-get clean
-
 GO111MODULE=off go get -d -u github.com/gopherdata/gophernotes
 
 cd "$GOPATH/src/github.com/gopherdata/gophernotes"
