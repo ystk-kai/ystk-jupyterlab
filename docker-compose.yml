@@ -18,36 +18,38 @@ x-environment: &environment
 x-base: &base
   image: ystk-jupyterlab
   container_name: ystk-jupyterlab
+  working_dir: /app/services
   build:
     context: docker/setup
     dockerfile: ../../Dockerfile
+  user: root
   volumes: *volumes
 
 services:
   shell:
     <<: *base
     entrypoint: ["bash"]
-    user: root
     environment: *environment
     profiles:
       - none
       
   jupyterlab:
     <<: *base
-    entrypoint: ["bash", "/app/services/jupyterlab.sh"]
+    user: jovyan
+    entrypoint: ["bash", "jupyterlab.sh"]
     ports:
       - 8888:8888
 
   deploy:
     <<: *base
-    entrypoint: ["bash", "/app/services/deploy.sh"]
+    entrypoint: ["bash", "deploy.sh"]
     environment: *environment
     profiles:
       - none
 
   pull:
     image: docker
-    entrypoint: ["sh", "/app/services/pull.sh"]
+    entrypoint: ["sh", "pull.sh"]
     volumes: *volumes
     environment: *environment
     profiles:
